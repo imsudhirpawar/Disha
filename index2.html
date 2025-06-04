@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Code Viewer</title>
+    <style>
+        .code-viewer {
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Write a program in Java with an algorithm to display a student mark sheet with total marks, percentage, and
+            grade.</h1>
+
+        <div class="code-viewer">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+<pre>
+import java.util.Scanner;
+
+public class StudentMarksheet {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Step 1: Input student details
+        System.out.print("Enter Student Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter Roll Number: ");
+        int rollNo = sc.nextInt();
+
+        // Step 2: Input marks for 5 subjects
+        int subjects = 5;
+        int[] marks = new int[subjects];
+        int total = 0;
+
+        for (int i = 0; i < subjects; i++) {
+            System.out.print("Enter marks for Subject " + (i + 1) + ": ");
+            marks[i] = sc.nextInt();
+            total += marks[i];
+        }
+
+        // Step 3: Calculate percentage
+        double percentage = (double) total / subjects;
+
+        // Step 4: Determine grade
+        char grade;
+        if (percentage >= 90) grade = 'A';
+        else if (percentage >= 80) grade = 'B';
+        else if (percentage >= 70) grade = 'C';
+        else if (percentage >= 60) grade = 'D';
+        else if (percentage >= 50) grade = 'E';
+        else grade = 'F';
+
+        // Step 5: Display Marksheet
+        System.out.println("\n----- Student Mark Sheet -----");
+        System.out.println("Name: " + name);
+        System.out.println("Roll No: " + rollNo);
+        for (int i = 0; i < subjects; i++) {
+            System.out.println("Subject " + (i + 1) + ": " + marks[i]);
+        }
+        System.out.println("Total Marks: " + total);
+        System.out.printf("Percentage: %.2f%%\n", percentage);
+        System.out.println("Grade: " + grade);
+
+        sc.close();
+    }
+}
+
+</pre>
+        </div>
+    </div>
+
+
+    <div>
+        <h1>
+            Diamond Pattern
+        </h1>
+
+        <div class="code-viewer">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+<pre>
+                import java.util.Scanner;
+
+public class DiamondPattern {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Ask user for number of rows for upper half
+        System.out.print("Enter number of rows for the upper half: ");
+        int n = sc.nextInt();
+
+        // Upper half (including middle row)
+        for (int i = 1; i <= n; i++) {
+            // Print spaces
+            for (int j = i; j < n; j++) {
+                System.out.print(" ");
+            }
+            // Print stars
+            for (int k = 1; k <= (2 * i - 1); k++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        // Lower half
+        for (int i = n - 1; i >= 1; i--) {
+            // Print spaces
+            for (int j = n; j > i; j--) {
+                System.out.print(" ");
+            }
+            // Print stars
+            for (int k = 1; k <= (2 * i - 1); k++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        sc.close();
+    }
+}
+
+         </pre>  
+        </div>
+    </div>
+
+     <div>
+        <h1>
+            Write a program in Java with an algorithm to print transpose of a matrix.
+        </h1>
+
+        <div class="code-viewer">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+<pre>
+                import java.util.Scanner;
+
+public class MatrixTranspose {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Step 1: Input number of rows and columns
+        System.out.print("Enter number of rows: ");
+        int rows = sc.nextInt();
+        System.out.print("Enter number of columns: ");
+        int cols = sc.nextInt();
+
+        // Step 2: Declare and input the matrix
+        int[][] matrix = new int[rows][cols];
+        System.out.println("Enter matrix elements:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print("Element [" + i + "][" + j + "]: ");
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+
+        // Step 3: Compute transpose
+        int[][] transpose = new int[cols][rows];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                transpose[j][i] = matrix[i][j];
+            }
+        }
+
+        // Step 4: Print the transpose
+        System.out.println("\nTranspose of the matrix:");
+        for (int i = 0; i < cols; i++) {
+            for (int j = 0; j < rows; j++) {
+                System.out.print(transpose[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        sc.close();
+    }
+}
+
+         </pre>  
+        </div>
+    </div>
+
+     <div>
+        <h1>
+            Write a program in Java with an algorithm to implement parameterized constructor with two parameters id
+and name. While creating the objects obj1 and obj2 passed two arguments so that this constructor gets
+invoked after creation of obj1 and obj2.
+        </h1>
+
+        <div class="code-viewer">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+<pre>
+                class Student {
+    int id;
+    String name;
+
+    // Parameterized constructor
+    Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    // Method to display student details
+    void display() {
+        System.out.println("ID: " + id + ", Name: " + name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating objects with parameters
+        Student obj1 = new Student(101, "Alice");
+        Student obj2 = new Student(102, "Bob");
+
+        // Displaying object data
+        obj1.display();
+        obj2.display();
+    }
+}
+
+         </pre>  
+        </div>
+    </div>
+
+     <div>
+        <h1>
+            Write a Java program with an algorithm to create a class called Vehicle with a method called drive (). Create
+a subclass called Car that overrides the drive () method to print "Repairing a car".
+        </h1>
+
+        <div class="code-viewer">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+<pre>
+                // Base class
+class Vehicle {
+    // Method to be overridden
+    void drive() {
+        System.out.println("Driving a vehicle");
+    }
+}
+
+// Subclass
+class Car extends Vehicle {
+    // Overriding the drive method
+    @Override
+    void drive() {
+        System.out.println("Repairing a car");
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        // Creating an object of Car
+        Vehicle myCar = new Car();
+
+        // Call overridden method
+        myCar.drive();  // Output: Repairing a car
+    }
+}
+
+         </pre>  
+        </div>
+    </div>
+
+     <div>
+        <h1>
+            Write a Java program to create an interface Shape with the getArea() method. Create three classes
+Rectangle, Circle, and Triangle that implement the Shape interface. Implement the getArea() method for
+each of the three classes.
+        </h1>
+
+        <div class="code-viewer">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+<pre>
+                // Define the Shape interface
+interface Shape {
+    double getArea();
+}
+
+// Rectangle class implementing Shape interface
+class Rectangle implements Shape {
+    private double length;
+    private double width;
+
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    public double getArea() {
+        return length * width;
+    }
+}
+
+// Circle class implementing Shape interface
+class Circle implements Shape {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public double getArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+// Triangle class implementing Shape interface
+class Triangle implements Shape {
+    private double base;
+    private double height;
+
+    public Triangle(double base, double height) {
+        this.base = base;
+        this.height = height;
+    }
+
+    @Override
+    public double getArea() {
+        return 0.5 * base * height;
+    }
+}
+
+// Main class to test the implementations
+public class ShapeTest {
+    public static void main(String[] args) {
+        Shape rectangle = new Rectangle(5, 3);
+        Shape circle = new Circle(4);
+        Shape triangle = new Triangle(6, 2);
+
+        System.out.println("Rectangle Area: " + rectangle.getArea());
+        System.out.println("Circle Area: " + circle.getArea());
+        System.out.println("Triangle Area: " + triangle.getArea());
+    }
+}
+
+         </pre>  
+        </div>
+    </div>
+
+     <div>
+        <h1>
+            Write a java program with an algorithm that implements a multi-thread application that has three threads.
+First thread generates random integer every 1 second and if the value is even, second thread computes the
+square of the number and prints. If the value is odd, the third thread will print the value of cube of the
+number.
+        </h1>
+
+        <div class="code-viewer">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+<pre>
+                import java.util.Random;
+
+class NumberHolder {
+    private Integer number = null;
+    private boolean numberAvailable = false;
+
+    // Synchronized method to set the number
+    public synchronized void setNumber(int num) throws InterruptedException {
+        while (numberAvailable) {
+            wait();  // wait if previous number not processed
+        }
+        number = num;
+        numberAvailable = true;
+        notifyAll();
+    }
+
+    // Synchronized method to get the number
+    public synchronized int getNumber() throws InterruptedException {
+        while (!numberAvailable) {
+            wait();  // wait if no number available
+        }
+        numberAvailable = false;
+        notifyAll();
+        return number;
+    }
+}
+
+class NumberGenerator extends Thread {
+    private NumberHolder holder;
+    private Random random = new Random();
+
+    public NumberGenerator(NumberHolder holder) {
+        this.holder = holder;
+    }
+
+    @Override
+    public void run() {
+        try {
+            while (true) {
+                int num = random.nextInt(100);  // Random integer between 0 and 99
+                System.out.println("Generated number: " + num);
+                holder.setNumber(num);
+                Thread.sleep(1000);  // wait 1 second before generating next number
+            }
+        } catch (InterruptedException e) {
+            System.out.println("NumberGenerator interrupted");
+        }
+    }
+}
+
+class EvenSquareCalculator extends Thread {
+    private NumberHolder holder;
+
+    public EvenSquareCalculator(NumberHolder holder) {
+        this.holder = holder;
+    }
+
+    @Override
+    public void run() {
+        try {
+            while (true) {
+                int num = holder.getNumber();
+                if (num % 2 == 0) {
+                    System.out.println("Square of " + num + " is " + (num * num));
+                } else {
+                    // If odd, put it back and let odd thread handle it
+                    holder.setNumber(num);
+                    Thread.sleep(10);  // slight delay to prevent busy waiting
+                }
+            }
+        } catch (InterruptedException e) {
+            System.out.println("EvenSquareCalculator interrupted");
+        }
+    }
+}
+
+class OddCubeCalculator extends Thread {
+    private NumberHolder holder;
+
+    public OddCubeCalculator(NumberHolder holder) {
+        this.holder = holder;
+    }
+
+    @Override
+    public void run() {
+        try {
+            while (true) {
+                int num = holder.getNumber();
+                if (num % 2 != 0) {
+                    System.out.println("Cube of " + num + " is " + (num * num * num));
+                } else {
+                    // If even, put it back and let even thread handle it
+                    holder.setNumber(num);
+                    Thread.sleep(10);  // slight delay to prevent busy waiting
+                }
+            }
+        } catch (InterruptedException e) {
+            System.out.println("OddCubeCalculator interrupted");
+        }
+    }
+}
+
+public class MultiThreadApp {
+    public static void main(String[] args) {
+        NumberHolder holder = new NumberHolder();
+
+        Thread generator = new NumberGenerator(holder);
+        Thread evenThread = new EvenSquareCalculator(holder);
+        Thread oddThread = new OddCubeCalculator(holder);
+
+        generator.start();
+        evenThread.start();
+        oddThread.start();
+    }
+}
+
+         </pre>  
+        </div>
+    </div>
+
+
+     <div>
+        <h1>
+            Write a Java program with an algorithm to create a class called Bank Account with private instance variables
+account Number and balance. Provide public getter and setter methods to access and modify these variables.
+        </h1>
+
+        <div class="code-viewer">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+<pre>
+                public class BankAccount {
+    // Private instance variables
+    private String accountNumber;
+    private double balance;
+
+    // Constructor to initialize accountNumber and balance
+    public BankAccount(String accountNumber, double balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+    }
+
+    // Getter for accountNumber
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    // Setter for accountNumber
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    // Getter for balance
+    public double getBalance() {
+        return balance;
+    }
+
+    // Setter for balance
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    // Main method to test the class
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount("123456789", 5000.0);
+
+        // Accessing using getters
+        System.out.println("Account Number: " + account.getAccountNumber());
+        System.out.println("Balance: " + account.getBalance());
+
+        // Modifying using setters
+        account.setAccountNumber("987654321");
+        account.setBalance(7500.0);
+
+        System.out.println("Updated Account Number: " + account.getAccountNumber());
+        System.out.println("Updated Balance: " + account.getBalance());
+    }
+}
+
+         </pre>  
+        </div>
+    </div>
+
+     <div>
+        <h1>
+            Write a Java program with an algorithm to create a method that takes an integer as a parameter and throws
+an exception if the number is odd.
+        </h1>
+
+        <div class="code-viewer">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+<pre>
+                public class OddNumberExceptionDemo {
+
+    // Custom exception class for odd numbers
+    static class OddNumberException extends Exception {
+        public OddNumberException(String message) {
+            super(message);
+        }
+    }
+
+    // Method that throws an exception if the number is odd
+    public static void checkEvenNumber(int number) throws OddNumberException {
+        if (number % 2 != 0) {
+            throw new OddNumberException("The number " + number + " is odd!");
+        } else {
+            System.out.println("The number " + number + " is even.");
+        }
+    }
+
+    // Main method to test the checkEvenNumber method
+    public static void main(String[] args) {
+        int[] numbersToTest = {10, 15, 22, 33, 40};
+
+        for (int num : numbersToTest) {
+            try {
+                checkEvenNumber(num);
+            } catch (OddNumberException e) {
+                System.out.println("Exception caught: " + e.getMessage());
+            }
+        }
+    }
+}
+
+         </pre>  
+        </div>
+    </div>
+
+     <div>
+        <h1>
+            Write a Java program with an algorithm to insert the specified element at the specified position in the linked
+list.
+        </h1>
+
+        <div class="code-viewer">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+<pre>
+                class Node {
+    int data;
+    Node next;
+
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    Node head;
+
+    // Insert element at specified position
+    public void insertAtPosition(int data, int position) {
+        Node newNode = new Node(data);
+
+        if (position < 0) {
+            System.out.println("Invalid position. Must be >= 0.");
+            return;
+        }
+
+        if (position == 0) {
+            // Insert at the head
+            newNode.next = head;
+            head = newNode;
+            return;
+        }
+
+        Node current = head;
+        int count = 0;
+
+        // Traverse to the node before the desired position
+        while (current != null && count < position - 1) {
+            current = current.next;
+            count++;
+        }
+
+        if (current == null) {
+            System.out.println("Position is beyond the length of the list.");
+            return;
+        }
+
+        // Insert the new node
+        newNode.next = current.next;
+        current.next = newNode;
+    }
+
+    // Print the linked list
+    public void printList() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + (current.next != null ? " -> " : ""));
+            current = current.next;
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+
+        // Initial list: 10 -> 20 -> 30
+        list.insertAtPosition(10, 0);
+        list.insertAtPosition(20, 1);
+        list.insertAtPosition(30, 2);
+        System.out.print("Initial List: ");
+        list.printList();
+
+        // Insert 15 at position 1: 10 -> 15 -> 20 -> 30
+        list.insertAtPosition(15, 1);
+        System.out.print("After inserting 15 at position 1: ");
+        list.printList();
+
+        // Insert 5 at position 0: 5 -> 10 -> 15 -> 20 -> 30
+        list.insertAtPosition(5, 0);
+        System.out.print("After inserting 5 at position 0: ");
+        list.printList();
+
+        // Insert 35 at position 5 (end): 5 -> 10 -> 15 -> 20 -> 30 -> 35
+        list.insertAtPosition(35, 5);
+        System.out.print("After inserting 35 at position 5: ");
+        list.printList();
+
+        // Attempt invalid insertion
+        list.insertAtPosition(40, 10);
+    }
+}
+
+         </pre>  
+        </div>
+    </div>
+
+     <div>
+        <h1>
+            Write a Java program with an algorithm to implement: a) Hash Map b)Tree Map
+        </h1>
+
+        <div class="code-viewer">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+<pre>
+                import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+
+public class MapDemo {
+
+    public static void main(String[] args) {
+        // a) HashMap demonstration
+        System.out.println("=== HashMap Demo ===");
+        Map<String, Integer> hashMap = new HashMap<>();
+
+        // Insert key-value pairs
+        hashMap.put("Apple", 50);
+        hashMap.put("Banana", 30);
+        hashMap.put("Orange", 20);
+        hashMap.put("Mango", 40);
+
+        // Print all entries (order not guaranteed)
+        for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+
+        // b) TreeMap demonstration
+        System.out.println("\n=== TreeMap Demo ===");
+        Map<String, Integer> treeMap = new TreeMap<>();
+
+        // Insert key-value pairs
+        treeMap.put("Apple", 50);
+        treeMap.put("Banana", 30);
+        treeMap.put("Orange", 20);
+        treeMap.put("Mango", 40);
+
+        // Print all entries (keys sorted)
+        for (Map.Entry<String, Integer> entry : treeMap.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+    }
+}
+
+         </pre>  
+        </div>
+    </div>
+
+     <div>
+        <h1>
+            Write a Java program with an algorithm for Student Information Management System with Database
+Cnnectivity.
+        </h1>
+
+        <div class="code-viewer">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+<pre>
+
+                CREATE DATABASE school_db;
+USE school_db;
+
+CREATE TABLE students (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    age INT,
+    course VARCHAR(100)
+);
+
+
+import java.sql.*;
+import java.util.Scanner;
+
+public class StudentManagementSystem {
+
+    // Database connection parameters
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/school_db";
+    private static final String JDBC_USERNAME = "root";
+    private static final String JDBC_PASSWORD = "your_password";
+
+    private Connection connection;
+
+    public StudentManagementSystem() throws SQLException {
+        // Establish DB connection
+        connection = DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD);
+    }
+
+    // Add a student
+    public void addStudent(String name, int age, String course) throws SQLException {
+        String sql = "INSERT INTO students (name, age, course) VALUES (?, ?, ?)";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, name);
+            stmt.setInt(2, age);
+            stmt.setString(3, course);
+            int rows = stmt.executeUpdate();
+            System.out.println(rows + " student(s) added.");
+        }
+    }
+
+    // View all students
+    public void viewStudents() throws SQLException {
+        String sql = "SELECT * FROM students";
+        try (Statement stmt = connection.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            System.out.println("ID | Name | Age | Course");
+            System.out.println("-----------------------------");
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                int age = rs.getInt("age");
+                String course = rs.getString("course");
+
+                System.out.printf("%d | %s | %d | %s%n", id, name, age, course);
+            }
+        }
+    }
+
+    // Update a student
+    public void updateStudent(int id, String name, int age, String course) throws SQLException {
+        String sql = "UPDATE students SET name = ?, age = ?, course = ? WHERE id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, name);
+            stmt.setInt(2, age);
+            stmt.setString(3, course);
+            stmt.setInt(4, id);
+            int rows = stmt.executeUpdate();
+            System.out.println(rows + " student(s) updated.");
+        }
+    }
+
+    // Delete a student
+    public void deleteStudent(int id) throws SQLException {
+        String sql = "DELETE FROM students WHERE id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            int rows = stmt.executeUpdate();
+            System.out.println(rows + " student(s) deleted.");
+        }
+    }
+
+    public void close() throws SQLException {
+        if (connection != null) connection.close();
+    }
+
+    public static void main(String[] args) {
+        try (Scanner scanner = new Scanner(System.in)) {
+            StudentManagementSystem sms = new StudentManagementSystem();
+            boolean running = true;
+
+            while (running) {
+                System.out.println("\n--- Student Information Management System ---");
+                System.out.println("1. Add Student");
+                System.out.println("2. View Students");
+                System.out.println("3. Update Student");
+                System.out.println("4. Delete Student");
+                System.out.println("5. Exit");
+                System.out.print("Enter choice: ");
+
+                int choice = scanner.nextInt();
+                scanner.nextLine();  // consume newline
+
+                switch (choice) {
+                    case 1:
+                        System.out.print("Enter name: ");
+                        String name = scanner.nextLine();
+                        System.out.print("Enter age: ");
+                        int age = scanner.nextInt();
+                        scanner.nextLine(); // consume newline
+                        System.out.print("Enter course: ");
+                        String course = scanner.nextLine();
+
+                        sms.addStudent(name, age, course);
+                        break;
+
+                    case 2:
+                        sms.viewStudents();
+                        break;
+
+                    case 3:
+                        System.out.print("Enter student ID to update: ");
+                        int updateId = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.print("Enter new name: ");
+                        String newName = scanner.nextLine();
+                        System.out.print("Enter new age: ");
+                        int newAge = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.print("Enter new course: ");
+                        String newCourse = scanner.nextLine();
+
+                        sms.updateStudent(updateId, newName, newAge, newCourse);
+                        break;
+
+                    case 4:
+                        System.out.print("Enter student ID to delete: ");
+                        int deleteId = scanner.nextInt();
+                        scanner.nextLine();
+
+                        sms.deleteStudent(deleteId);
+                        break;
+
+                    case 5:
+                        running = false;
+                        sms.close();
+                        System.out.println("Exiting system...");
+                        break;
+
+                    default:
+                        System.out.println("Invalid choice. Try again.");
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Database error: " + e.getMessage());
+        }
+    }
+}
+
+         </pre>  
+        </div>
+    </div>
+<script>
+    function copyCode(button) {
+        // Find the <pre> sibling of the clicked button
+        const pre = button.nextElementSibling;
+        if (!pre) {
+            alert('No code block found!');
+            return;
+        }
+
+        const codeText = pre.textContent.trim();
+
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(codeText).then(() => {
+                alert('Code copied to clipboard!');
+            }).catch(err => {
+                alert('Failed to copy code: ' + err);
+            });
+        } else {
+            // Fallback for older browsers
+            const textarea = document.createElement('textarea');
+            textarea.value = codeText;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                alert('Code copied to clipboard!');
+            } catch (err) {
+                alert('Failed to copy code: ' + err);
+            }
+            document.body.removeChild(textarea);
+        }
+    }
+</script>
+
+<style>
+    .copy-btn {
+        margin-bottom: 8px;
+        padding: 6px 12px;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 5px;
+        border: none;
+        background-color: #28a745;
+        color: white;
+    }
+    .copy-btn:hover {
+        background-color: #218838;
+    }
+</style>
+</body>
+
+</html>
